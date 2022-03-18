@@ -7,9 +7,7 @@ import matplotlib.offsetbox as msb
 
 
 def read_conf(path):
-'''
-传入配置文件路径，返回配置文件中的变量的字典。
-'''
+    '''传入配置文件路径，返回配置文件中的变量的字典。'''
     try:
         with open(path, encoding = 'utf-8') as conf:
             exec(conf.read())
@@ -22,9 +20,7 @@ def read_conf(path):
     return info 
 
 def calculate(info):
-'''
-传入配置文件字典，返回线性回归方程的参数。
-'''
+    '''传入配置文件字典，返回线性回归方程的参数。'''
     x_data = info['x_data']
     y_data = info['y_data']
 
@@ -57,9 +53,7 @@ def calculate(info):
 
 
 def draw(info, reg, path):
-'''
-传入配置文件字典、参数字典、图像保存路径，作图并保存在特定路径。
-'''
+    '''传入配置文件字典、参数字典、图像保存路径，作图并保存在特定路径。'''
     plt.rcParams['font.sans-serif'] = ['SimHei']
     plt.figure()
     plt.grid(True)
@@ -67,9 +61,6 @@ def draw(info, reg, path):
     plt.plot(info['x_data'], reg['y_pre'], color = 'black')
     plt.xlabel(info['x_label'])
     plt.ylabel(info['y_label'])
-    # msb.AnchoredText(info['text'], loc = 'best')
-    # mpl.axes.Axes.add_artist(msb.AnchoredText(info['text'], loc = 'lower right'))
-    plt.text(0.5, 0.5, s = info['text'])
-    # plt.legend()
+    plt.text(4.2, 2, s = info['text'])
     plt.savefig(path)
     
