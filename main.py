@@ -1,4 +1,3 @@
-import time
 import phyplot as pp
 
 # 读取配置文件
@@ -9,5 +8,5 @@ info = pp.read_conf(conf_path)
 reg = pp.calculate(info)
 
 # 作图
-fig_path = './graph/{}.png'.format(time.strftime('%Y%m%d_%H%M%S', time.localtime()))
+fig_path = './graph/'
 pp.draw(info, reg, fig_path)

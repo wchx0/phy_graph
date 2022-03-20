@@ -1,5 +1,7 @@
-import shutil
+import os
+import time
 import math
+import shutil
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -62,5 +64,11 @@ def draw(info, reg, path):
     plt.xlabel(info['x_label'])
     plt.ylabel(info['y_label'])
     plt.text(4.2, 2, s = info['text'])
-    plt.savefig(path)
+
+    fig_name = '{}.png'.format(time.strftime('%Y%m%d_%H%M%S', time.localtime()))
+    try:
+        plt.savefig(path + fig_name)
+    except FileNotFoundError:
+        os.makedirs(path)
+        plt.savefig(path + fig_name)
     
